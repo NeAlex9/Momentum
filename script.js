@@ -3,7 +3,7 @@ const time = document.querySelector('.time'),
     greeting = document.querySelector('.greeting'),
     name = document.querySelector('.name'),
     focus = document.querySelector('.focus'),
-    images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg','05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg',
+    images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg',
         '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg',
         '19.jpg', '20.jpg'];
 let randomIndexesForImages = [],
@@ -49,7 +49,7 @@ function GenerateRandomIndexes(len) {
     return arr;
 }
 
-function SetBackgroundRiseIndex(src){
+function SetBackgroundRiseIndex(src) {
     currentImageIndex = (currentImageIndex >= 19) ? currentImageIndex = 0 : currentImageIndex++;
     const img = new Image();
     img.src = src;
@@ -58,7 +58,7 @@ function SetBackgroundRiseIndex(src){
     };
 }
 
-function ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex){
+function ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex) {
     let time = new Date(),
         hour = time.getHours();
     if (currentHour !== hour) {
@@ -69,16 +69,28 @@ function ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex){
     setTimeout(ToggleBGEveryHour, 1000);
 }
 
-function ChoosePathToImg(images, randomIndexesForImages, currentImageIndex) {
+function ChooseTimeOfDay() {
     let today = new Date(),
         hour = today.getHours();
     if (hour >= 6 && hour <= 12) {
+        return 'morning';
+    } else if (hour > 12 && hour <= 18) {
+        return 'day';
+    } else if (hour > 18 && hour <= 24) {
+        return 'evening';
+    } else {
+        return 'night';
+    }
+}
+
+function ChoosePathToImg(images, randomIndexesForImages, currentImageIndex) {
+    if (ChooseTimeOfDay() === 'morning') {
         return "assets/images/morning/" +
             images[randomIndexesForImages[currentImageIndex]];
-    } else if (hour > 12 && hour <= 18) {
+    } else if (ChooseTimeOfDay() === 'day') {
         return "assets/images/day/" +
             images[randomIndexesForImages[currentImageIndex]];
-    } else if (hour > 18 && hour <= 24) {
+    } else if (ChooseTimeOfDay() === 'evening') {
         return "assets/images/evening/" +
             images[randomIndexesForImages[currentImageIndex]];
     } else {
@@ -87,25 +99,45 @@ function ChoosePathToImg(images, randomIndexesForImages, currentImageIndex) {
     }
 }
 
-// Get Name
-function getName() {
-    if (localStorage.getItem('name') === null) {
+function SetGreeting(){
+    if (ChooseTimeOfDay() === 'morning') {
+        greeting.innerHTML = 'Good morning, ';
+    } else if (ChooseTimeOfDay() === 'day') {
+        greeting.innerHTML = 'Good day, ';
+    } else if (ChooseTimeOfDay() === 'evening') {
+        greeting.innerHTML = 'Good evening, ';
+    } else {
+        greeting.innerHTML = 'Good night, ';
+    }
+    setTimeout(SetGreeting, 1000);
+}
+
+function SetNameWhileStart() {
+    if (localStorage.getItem('name') === null || localStorage.getItem('name') === "") {
         name.textContent = '[Enter Name]';
     } else {
         name.textContent = localStorage.getItem('name');
     }
 }
 
-// Set Name
-function setName(e) {
-    if (e.type === 'keypress') {
-        // Make sure enter is pressed
-        if (e.which == 13 || e.keyCode == 13) {
-            localStorage.setItem('name', e.target.innerText);
+function SetNameWithAcknowledgment(event) {
+    if (event.type === 'keypress') {
+        if (event.keyCode === 13) {
+            if (event.target.innerText !== "") {
+                localStorage.setItem('name', event.target.innerText);
+            } else {
+                event.target.innerText = localStorage['name'];
+            }
             name.blur();
         }
     } else {
-        localStorage.setItem('name', e.target.innerText);
+        localStorage.setItem('name', event.target.innerText);
+    }
+}
+
+function SetNameWithBlur(event) {
+    if (event.target.innerText === '') {
+        event.target.innerText = localStorage['name'];
     }
 }
 
@@ -131,8 +163,8 @@ function setFocus(e) {
     }
 }
 
-name.addEventListener('keypress', setName);
-name.addEventListener('blur', setName);
+name.addEventListener('keypress', SetNameWithAcknowledgment);
+name.addEventListener('blur', SetNameWithBlur);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
@@ -143,10 +175,11 @@ ShowTime();
 ShowDate();
 ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex);
 
-buttonChange.addEventListener('click', function (){
+buttonChange.addEventListener('click', function () {
     currentImageIndex = (currentImageIndex >= 19) ? currentImageIndex = 0 : ++currentImageIndex;
     SetBackgroundRiseIndex(ChoosePathToImg(images, randomIndexesForImages, currentImageIndex));
 })
 
-getName();
+SetGreeting();
+SetNameWhileStart();
 getFocus();

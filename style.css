@@ -27,10 +27,22 @@ body {
 }
 
 .toggle_bg_button{
-  background-image: url("assets/images/updateButton.png");
+  width: 10%;
+  height: 10%;
+  background: url("assets/images/updateButton.png") no-repeat;
+  background-size: contain;
   position: absolute;
   top: 1rem;
   left: 1rem;
+  border: none;
+}
+
+.toggle_bg_button:hover{
+  filter: grayscale(.8);
+}
+
+.toggle_bg_button:active{
+  transform: scale(1.02)
 }
 
 h1 {
