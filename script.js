@@ -39,9 +39,9 @@ function GetRandomNumber(min, max) {
     return Math.floor(rand);
 }
 
-function GenerateRandomIndexes() {
+function GenerateRandomIndexes(len) {
     let arr = [];
-    while (arr.length !== 20) {
+    while (arr.length !== len) {
         let number = GetRandomNumber(0, 20);
         if (arr.indexOf(number) === -1)
             arr.push(number);
@@ -49,44 +49,41 @@ function GenerateRandomIndexes() {
     return arr;
 }
 
-function ChangeBackground(){
+function SetBackgroundRiseIndex(src){
     currentImageIndex = (currentImageIndex >= 19) ? currentImageIndex = 0 : currentImageIndex++;
-    SetBackground();
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+        document.body.style.backgroundImage = `url(${src})`;
+    };
 }
 
-function CheckTimeToToggleBG(src){
+function ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex){
     let time = new Date(),
         hour = time.getHours();
     if (currentHour !== hour) {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-            ChangeBackground();
-        }
+        let src = ChoosePathToImg(images, randomIndexesForImages, currentImageIndex);
+        SetBackgroundRiseIndex(src);
         currentHour = hour;
     }
-    setTimeout(CheckTimeToToggleBG, 1000);
+    setTimeout(ToggleBGEveryHour, 1000);
 }
 
-function SetBackground() {
+function ChoosePathToImg(images, randomIndexesForImages, currentImageIndex) {
     let today = new Date(),
         hour = today.getHours();
     if (hour >= 6 && hour <= 12) {
-        document.body.style.backgroundImage = "url('assets/images/morning/" +
+        return "assets/images/morning/" +
             images[randomIndexesForImages[currentImageIndex]];
-        greeting.textContent = 'Good Morning, ';
     } else if (hour > 12 && hour <= 18) {
-        document.body.style.backgroundImage = "url('assets/images/day/" +
+        return "assets/images/day/" +
             images[randomIndexesForImages[currentImageIndex]];
-        greeting.textContent = 'Good Afternoon, ';
     } else if (hour > 18 && hour <= 24) {
-        document.body.style.backgroundImage = "url('assets/images/evening/" +
+        return "assets/images/evening/" +
             images[randomIndexesForImages[currentImageIndex]];
-        greeting.textContent = 'Good Evening, ';
     } else {
-        document.body.style.backgroundImage = "url('assets/images/night/" +
+        return "assets/images/night/" +
             images[randomIndexesForImages[currentImageIndex]];
-        greeting.textContent = 'Good night, ';
     }
 }
 
@@ -140,18 +137,16 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
 // Run
+randomIndexesForImages = GenerateRandomIndexes(20);
+SetBackgroundRiseIndex(ChoosePathToImg(images, randomIndexesForImages, currentImageIndex));
 ShowTime();
 ShowDate();
-randomIndexesForImages = GenerateRandomIndexes();
-SetBackground();
-CheckTimeToToggleBG();
+ToggleBGEveryHour(images, randomIndexesForImages, currentImageIndex);
+
 buttonChange.addEventListener('click', function (){
     currentImageIndex = (currentImageIndex >= 19) ? currentImageIndex = 0 : ++currentImageIndex;
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-        SetBackground();
-    }
+    SetBackgroundRiseIndex(ChoosePathToImg(images, randomIndexesForImages, currentImageIndex));
 })
+
 getName();
 getFocus();
