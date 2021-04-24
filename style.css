@@ -23,8 +23,10 @@ main{
 }
 
 .TimeDateFocus_wrapper{
+    margin: auto auto;
     width: 70%;
 }
+
 .time {
     font-size: 8rem;
 }
@@ -134,5 +136,10 @@ h2 {
 
     .quote_wrapper{
         font: 1rem Georgia, serif;
+    }
+
+    .TimeDateFocus_wrapper{
+        margin: auto auto;
+        width: 300px;
     }
 }
