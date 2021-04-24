@@ -1,3 +1,5 @@
+@import "assets/css/weather.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,7 +29,7 @@ body {
 }
 
 .toggle_bg_button {
-    width: 10%;
+    width: 6rem;
     height: 10%;
     background: url("assets/images/updateButton.png") no-repeat;
     background-size: contain;
@@ -69,6 +71,7 @@ h2 {
     border-radius: 1em;
     color: black;
     background: rgba(255, 255, 255, 0.8);
+    line-height: 2rem;
 }
 
 .btnChangeQ_wrapper{
@@ -85,6 +88,10 @@ h2 {
     background-size: contain;
     text-decoration: none;
     border: none;
+}
+
+.focus_wrapper{
+    width: 100%;
 }
 
 .btnChangeQ:hover{
@@ -113,5 +120,13 @@ h2 {
 
     .date {
         font-size: 2rem;
+    }
+
+    .toggle_bg_button{
+        width: 3rem;
+    }
+
+    .quote_wrapper{
+        font: 1rem Georgia, serif;
     }
 }

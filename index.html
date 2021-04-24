@@ -8,6 +8,17 @@
     <title>momentum</title>
 </head>
 <body>
+    <div class="weather">
+        <div class="result_wrapper">
+            <div class="city" contenteditable="true"></div>
+            <div class="temperature"></div>
+        </div>
+        <div class="weather-description">
+            <div class="type_weather"></div>
+            <div class="wind_humidity"></div>
+        </div>
+
+    </div>
     <main>
         <time class="time shadow"></time>
         <div class="date shadow"></div>
@@ -16,8 +27,10 @@
             <span class="greeting shadow"></span>
             <span class="name shadow" contenteditable="true"></span>
         </h1>
-        <h2 class="shadow">What Is Your Focus For Today?</h2>
-        <h2 class="shadow"><span class="focus" contenteditable="true"></span></h2>
+        <h2 class="shadow focus_wrapper">
+            What Is Your Focus For Today?
+            <span class="focus" contenteditable="true"></span>
+        </h2>
     </main>
     <div class='quote_wrapper'>
         <figure class="quote">
@@ -30,12 +43,12 @@
             <button class="btnChangeQ"></button>
         </div>
     </div>
-    <script src="script.js"></script>
     <script src="modules/DateTime.js"></script>
     <script src="modules/Background.js"></script>
     <script src="modules/Greeting.js"></script>
     <script src="modules/Name.js"></script>
     <script src="modules/Focus.js"></script>
     <script src="modules/Quote.js"></script>
+    <script src="modules/Weather.js"></script>
 </body>
 </html>

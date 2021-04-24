@@ -1,0 +1,54 @@
+.weather {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result_wrapper {
+    display: flex;
+    text-shadow: black 1px 1px 2px;
+}
+
+.city {
+    height: 10%;
+    font-size: 1.2rem;
+    width: 300px;
+    padding: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+.temperature {
+    position: relative;
+    top: -5px;
+    font-size: 2.2rem;
+}
+
+.weather-description {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    color: #ffffff;
+    background-color: #44aadd;
+    border-radius: 5px;
+}
+
+@media (max-width: 700px){
+    .city{
+        width: 170px;
+        padding: 4px 0;
+    }
+
+    .temperature{
+        font-size: 1.6rem;
+    }
+
+    .weather-description{
+        font-size: 0.8rem;
+    }
+}
