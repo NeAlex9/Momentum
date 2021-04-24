@@ -8,41 +8,44 @@
     <title>momentum</title>
 </head>
 <body>
-    <div class="weather">
-        <div class="result_wrapper">
-            <div class="city" contenteditable="true"></div>
-            <div class="temperature"></div>
-        </div>
-        <div class="weather-description">
-            <div class="type_weather"></div>
-            <div class="wind_humidity"></div>
+    <main>
+        <div class="weather">
+            <div class="result_wrapper">
+                <div class="city" contenteditable="true"></div>
+                <div class="temperature"></div>
+            </div>
+            <div class="weather-description">
+                <div class="type_weather"></div>
+                <div class="wind_humidity"></div>
+            </div>
         </div>
 
-    </div>
-    <main>
-        <time class="time shadow"></time>
-        <div class="date shadow"></div>
-        <button class="toggle_bg_button"></button>
-        <h1>
-            <span class="greeting shadow"></span>
-            <span class="name shadow" contenteditable="true"></span>
-        </h1>
-        <h2 class="shadow focus_wrapper">
-            What Is Your Focus For Today?
-            <span class="focus" contenteditable="true"></span>
-        </h2>
-    </main>
-    <div class='quote_wrapper'>
-        <figure class="quote">
-            <blockquote>
-            </blockquote>
-            <figcaption>
-            </figcaption>
-        </figure>
-        <div class="btnChangeQ_wrapper">
-            <button class="btnChangeQ"></button>
+        <div class='TimeDateFocus_wrapper'>
+            <time class="time shadow"></time>
+            <div class="date shadow"></div>
+            <button class="toggle_bg_button"></button>
+            <h1>
+                <span class="greeting shadow"></span>
+                <span class="name shadow" contenteditable="true"></span>
+            </h1>
+            <h2 class="shadow focus_wrapper">
+                What Is Your Focus For Today?
+                <span class="focus" contenteditable="true"></span>
+            </h2>
         </div>
-    </div>
+
+        <div class='quote_wrapper'>
+            <figure class="quote">
+                <blockquote>
+                </blockquote>
+                <figcaption>
+                </figcaption>
+            </figure>
+            <div class="btnChangeQ_wrapper">
+                <button class="btnChangeQ"></button>
+            </div>
+        </div>
+    </main>
     <script src="modules/DateTime.js"></script>
     <script src="modules/Background.js"></script>
     <script src="modules/Greeting.js"></script>
