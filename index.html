@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <title>momentum</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
+    <title>momentum</title>
 </head>
 <body>
-  <time class="time"></time>
-  <div class="date"></div>
-  <button class="toggle_bg_button"></button>
-  <h1>
-    <span class="greeting"></span>
-    <span class="name" contenteditable="true"></span>
-  </h1>
-  <h2>What Is Your Focus For Today?</h2>
-  <h2 class="focus" contenteditable="true"></h2>
-  <script src="script.js"></script>
+    <main>
+        <time class="time shadow"></time>
+        <div class="date shadow"></div>
+        <button class="toggle_bg_button"></button>
+        <h1>
+            <span class="greeting shadow"></span>
+            <span class="name shadow" contenteditable="true"></span>
+        </h1>
+        <h2 class="shadow">What Is Your Focus For Today?</h2>
+        <h2 class="shadow"><span class="focus" contenteditable="true"></span></h2>
+    </main>
+    <div class='quote_wrapper'>
+        <figure class="quote">
+            <blockquote>
+            </blockquote>
+            <figcaption>
+            </figcaption>
+        </figure>
+        <div class="btnChangeQ_wrapper">
+            <button class="btnChangeQ"></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="modules/DateTime.js"></script>
+    <script src="modules/Background.js"></script>
+    <script src="modules/Greeting.js"></script>
+    <script src="modules/Name.js"></script>
+    <script src="modules/Focus.js"></script>
+    <script src="modules/Quote.js"></script>
 </body>
 </html>

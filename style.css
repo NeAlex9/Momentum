@@ -1,64 +1,117 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-  background-size: cover;
-  color: #000000;
-  transition: background-image 1s ease-in-out;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background-size: cover;
+    color: white;
+    transition: background-image 1s ease-in-out;
 }
 
 .time {
-  font-size: 6rem;
+    font-size: 8rem;
 }
 
-.date{
-  font-size: 2rem;
-  text-align: center;
+.date {
+    font-size: 4rem;
+    text-align: center;
 }
 
-.toggle_bg_button{
-  width: 10%;
-  height: 10%;
-  background: url("assets/images/updateButton.png") no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  border: none;
+.toggle_bg_button {
+    width: 10%;
+    height: 10%;
+    background: url("assets/images/updateButton.png") no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    border: none;
 }
 
-.toggle_bg_button:hover{
-  filter: grayscale(.8);
+.toggle_bg_button:hover {
+    filter: grayscale(.8);
+    cursor: pointer;
 }
 
-.toggle_bg_button:active{
-  transform: scale(1.02)
+.toggle_bg_button:active {
+    transform: scale(1.02)
+}
+
+.shadow {
+    text-shadow: black 2px 2px 1px;
 }
 
 h1 {
-  margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.quote_wrapper {
+    display: flex;
+    position: absolute;
+    bottom: 12px;
+    font: 1.2rem Georgia, serif;
+    margin: 0;
+    padding: 0.6em;
+    border-radius: 1em;
+    color: black;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.btnChangeQ_wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1.4em;
+}
+
+.btnChangeQ {
+    width: 30px;
+    height: 30px;
+    background: url("assets/images/arrow-right.png") no-repeat;
+    background-size: contain;
+    text-decoration: none;
+    border: none;
+}
+
+.btnChangeQ:hover{
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.btnChangeQ:active {
+    transform: scale(1.02)
+}
+
+.quote figcaption,
+.quote blockquote {
+    margin: 0.5em;
+}
+
+.quote figcaption {
+    text-align: right;
 }
 
 @media (max-width: 700px) {
-  .time {
-    font-size: 4rem;
-  }
-  .date{
-    font-size: 1.5rem;
-  }
+    .time {
+        font-size: 5rem;
+    }
+
+    .date {
+        font-size: 2rem;
+    }
 }
